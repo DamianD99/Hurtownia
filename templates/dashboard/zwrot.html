@@ -1,0 +1,50 @@
+{%extends 'partnerzy/base.html' %}
+{%  load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/folter.css' %}">
+{% load crispy_forms_tags %}
+{% block title %} Strona internetowa{% endblock %}
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+<div class="container my-5">
+  <section>
+
+    <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">Hurtownia D.D</h6>
+
+    <h3 class="font-weight-bold black-text mb-4 pb-2 text-center">Zwrot towarów</h3>
+    <hr class="w-header">
+
+    <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">Got a question? We've got answers. If you have some other questions, see our support center.</p>
+
+    <div class="row text-center text-md-left">
+      <div class="col-md-6 mb-4">
+        <h3 class="font-weight-normal mb-3">Zasady zwrotu towaru przez konsumenta</h3>
+        <p>Zasady zwrotu towaru są szczegółowo opisane w regulaminie sklepu ProLine dostępnym pod tym adresem</p>
+      </div>
+
+
+      <div class="col-md-6 mb-4">
+        <h3 class="font-weight-normal mb-3">Wypełnij formularz zwrotu</h3>
+         <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-success btn-block" type="submit" value="Wyślij Formularz Zwrotu">
+            </form>
+        </div>
+
+<div class="col-md-6 mb-4">
+        <h3 class="font-weight-normal mb-3">Adres do odesłania zwrotu towaru</h3>
+        <p class="text-muted">Zwracany towar wraz z wypełnionym formularzem należy przesłać na adres:
+      ProLine (zwrot towaru)</p>
+    </div>
+    </div>
+  </section>
+</div>
+</div>
+{% endblock content %}

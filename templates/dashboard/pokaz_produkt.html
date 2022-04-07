@@ -1,0 +1,28 @@
+
+{%extends 'partnerzy/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+{% block title %} Strona internetowa{% endblock %}
+{% block content %}
+
+
+<div class="product-detail">
+    <img src="{% if produkty.image %}{{ produkty.image.url }}
+    {% else %}{% static "profile-pics" %}{% endif %}" alt="..." style="height: 400px; width: auto">
+    <h1>{{ produkty.nazwa }}</h1>
+    <h2>
+      <a href="{{ product.kategoria.get_absolute_url }}">
+        Kategoria: {{ produkty.kategoria }}
+      </a>
+    </h2>
+    <h3><p class="price">Cena :{{ produkty.cena }}zł</p></h3>
+<form action="{% url "cart:cart_add" produkty.id %}" method="post">
+      {{ cart_product_form }}
+      {% csrf_token %}
+      <input type="submit" value="Dodaj do koszyka">
+    </form>
+    <h4>Ilość dostepna w sklepie : {{ produkty.ilosc }}</h4>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{%extends 'partnerzy/base.html' %}
+
+{% load widget_tweaks %}
+{% block title %} Strona internetowa{% endblock %}
+{% block content %}
+    {% if messages %}
+        <ul class="messages" xmlns="http://www.w3.org/1999/html">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+<div class="jumbotron">
+
+  <!-- Section -->
+  <section class="deep-blue-gradient">
+
+    <style>
+      .input-grey .form-control {
+        border-radius: .125rem;
+      }
+
+      .form-control:focus {
+        background-color: rgba(255,255,255,.3);
+      }
+
+      .input-grey input::placeholder {
+        color: #fff;
+      }
+    </style>
+
+    <style>
+      .map-container {
+        height: 200px;
+        position: relative;
+      }
+
+      .map-container iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+    </style>
+    <div id="map-container-google-1" class="z-depth-1 map-container mb-5">
+      <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+        style="border:0" allowfullscreen></iframe>
+    </div>
+
+       {% if messageSent %}
+     <div class="alert alert-primary" role="alert">
+ <h3><strong>Wysłanie emila do firmy powiodło się</strong></h3>
+      <p>Wysłałes emial do firmy {{ form.cleaned_data.to }}</p>
+     </div>
+           {% else %}
+
+    <div class="container">
+      <h3><strong>Wyślij emial z zapytaniem</strong></h3>
+
+      <form method="post">
+        {% csrf_token %}
+          {{ form.as_p }}
+        <br/>
+        <div class="text-center">
+          <input
+            type="submit"
+            class="btn btn-secondary"
+            style="width: 100%"
+            value="Wyślij emial"
+          />
+        </div>
+      </form>
+    </div>
+    {% endif %}
+      <div class="row">
+
+      <div class="col-lg-5 col-md-12 mb-0 mb-md-0">
+
+        <h3 class="font-weight-bold">Kontakt do admina</h3>
+
+        <p class="text-muted">
+
+        <p><span class="font-weight-bold mr-2">Email:</span><a href="">ddusza12@inteira.pl</a></p>
+        <p><span class="font-weight-bold mr-2">Phone:</span><a href="">+48 535 845 645</a></p>
+
+
+      </div>
+
+
+</div>
+  </section>
+</div>
+{% endblock content %}

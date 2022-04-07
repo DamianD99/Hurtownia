@@ -1,0 +1,86 @@
+
+{%extends 'partnerzy/base.html' %}
+
+{% block title %}Products Edit Page{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row my-4">
+    <div class="col-md-6 offset-md-3 p-3 bg-white">
+        <h3>Edytuj zawartość przedmiotu</h3>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if error %}
+{{ error }}
+{% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-info" type="submit" value="Zmień wartosci produktu">
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+</div>
+{% load crispy_forms_tags %}
+<div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Make Request
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input class="btn btn-info btn-block" type="submit" value="Make Request">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    Orders Records
+                </div>
+                <div class="card-body">
+           <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Udzkodzony </th>
+                    <th scope="col">ilosc</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+             {% if produkty.zamówienia == user %}
+                 {% for produkty in produkty %}
+                <tr>
+                    <td>{{ produkty.nazwa }}</td>
+                    <td>{{ produkty.kategoria }}</td>
+                    <td>{{ produkty.categoty}}</td>
+                    <td>{{ produkty.ilosc}}</td>
+                </tr>
+
+                    {% endfor %}
+                    {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

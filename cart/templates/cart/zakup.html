@@ -1,0 +1,44 @@
+{%extends 'partnerzy/base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block title %} Strona internetowa{% endblock %}
+{% block content %}
+<div class="jumbotron">
+
+  <section class="deep-blue-gradient">
+
+    <div class="container">
+      <h3><strong>Wyślij emial z zapytaniem</strong></h3>
+
+<div class="order-info">
+    <h3>Your order</h3>
+    <ul>
+      {% for item in cart %}
+        <li>
+          {{ item.quantity }}x {{ item.product.nazwa }}
+          <span>${{ item.total_price }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    <p>Total: ${{ cart.get_total_price }}</p>
+  </div>
+
+           <div class="col-md-6 mb-4">
+
+         <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-success btn-block" type="submit" value="Wyślij Formularz Zwrotu">
+            </form>
+        </div>
+        <br/>
+
+      </form>
+    </div>
+
+  </section>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+{%extends 'partnerzy/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block title %} Strona internetowa{% endblock %}
+{% block content %}
+<div class="jumbotron">
+
+
+  <!-- Section: Block Content -->
+  <section class="dark-grey-text">
+
+    <h3 class="text-center font-weight-bold mb-4 pb-2">Opis Aplikacji</h3>
+    <p class="text-center text-muted w-responsive mx-auto mb-5">Aplikacja internetowa ma za zadanie obsługe hurtowni elektronicznej.</p>
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-lg-5 mb-lg-0 mb-5">
+
+        <img src="https://mdbootstrap.com/img/Photos/Others/images/83.jpg" class="img-fluid rounded z-depth-1" alt="Sample project image">
+
+      </div>
+
+      <div class="col-lg-7">
+
+        <ul class="list-unstyled fa-ul mb-0">
+          <li class="d-flex justify-content-center pl-4">
+            <span class="fa-li"><i class="fas fa-book fa-2x cyan-text"></i></span>
+            <div>
+              <h5 class="font-weight-bold mb-3">Technologia</h5>
+              <p class="text-muted">Cała strona jest zapisana w językach: Django , HTML, CSS. Obsługuje również baze danych Postgresql</p>
+            </div>
+          </li>
+          <li class="d-flex justify-content-center pl-4">
+            <span class="fa-li"><i class="fas fa-code fa-2x red-text"></i></span>
+            <div>
+              <h5 class="font-weight-bold mb-3">Funkcje na stronie</h5>
+              <p class="text-muted">Apliakcja posiada panel Administratora oraz panel uzydkownika. Po za tym umożliwia rejestracje logownaie odrzyskanie haseł uzydkownika. Posiada panel zakupu zwrotu oraz możliwość wyzyłania email.</p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+    <hr class="my-5">
+
+  </section>
+</div>
+
+{% endblock %}

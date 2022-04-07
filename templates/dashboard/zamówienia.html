@@ -1,0 +1,36 @@
+{%extends 'partnerzy/base.html' %}
+{% block title %} Strona internetowa{% endblock %}
+
+{% block content %}
+    {% include 'partnerzy/start.html' %}
+       <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <thead class="bg-success">
+                        <tr class="text-white">
+                            <th scope="col">Nazwa</th>
+                            <th scope="col">Nazwa Klijenta który zamawia</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Starus produktu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                     {% for zamówienia in zamówienia %}
+
+                       <tr>
+                                <td>{{ zamówienia.produkt }}</td>
+                                <td>{{ zamówienia.klijent}}</td>
+                                <td>{{ zamówienia.data_created }}</td>
+                                <td>{{ zamówienia.status}}</td>
+                            </tr>
+                            {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

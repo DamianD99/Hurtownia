@@ -1,0 +1,62 @@
+{%extends 'partnerzy/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block title %} Strona internetowa{% endblock %}
+{% block content %}
+
+    {% include 'partnerzy/start.html' %}
+
+<div class="row my-4">
+    <div class="col-md-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="card card-body">
+            <h5>Dodaj nowy produkt</h5>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-success btn-block" type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-bordered">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col">Nazwa Produktu</th>
+                    <th scope="col">Kategoria</th>
+                    <th scope="col">Udzkodzony </th>
+                    <th scope="col">Ilość</th>
+                    <th scope="col">Cena</th>
+                    <th scope="col">Panel edycji</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produkty in produkty %}
+                <tr>
+                    <td>{{ produkty.nazwa }}</td>
+                    <td>{{ produkty.kategoria }}</td>
+                    <td>{{ produkty.uszkodzony}}</td>
+                    <td>{{ produkty.ilosc}}</td>
+                    <td>{{ produkty.cena}}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm mr-2"
+                            href="{% url 'post_delete' produkty.id %}">Usuń</a>
+
+                        <a class="btn btn-danger btn-sm ml-2"
+                            href="{% url 'post_update' produkty.id %}">Edytuj</a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

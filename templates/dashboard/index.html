@@ -1,0 +1,14 @@
+{%extends 'partnerzy/base.html' %}
+{% block title %} Strona internetowa{% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
+ {% include 'partnerzy/start.html' %}
+{% else%}
+
+{% include 'dashboard/index_c.html' %}
+{% endif%}
+
+{% endblock %}

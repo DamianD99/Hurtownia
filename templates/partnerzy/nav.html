@@ -1,0 +1,94 @@
+
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-info bg-info">
+ <li class="nav-item">
+     <a href="{% url 'start' %}" class="btn" style="color: midnightblue; margin-left: 10px; " type="submit" id="header-links"><b><h4>Hurtowania D.D</h4></b></a>
+     <a href="{% url 'contact' %}" class="btn" style="color: midnightblue; margin-left: 10px; " type="submit" id="header-links"><b><h4>Kontakt</h4></b></a>
+                </li>
+
+{% if user.is_authenticated %}
+
+
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+  <a class="navbar-brand" href="{% url 'hurtownia-index' %}">Panel Zakupu </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+          <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Serwis i formularze
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <a class="dropdown-item" href="{% url 'serwis' %}">Serwis ogólny</a>
+    <a class="dropdown-item" href="{% url 'reklamacja' %}">Zgłoszenie Reklamacji</a>
+    <a class="dropdown-item" href="{% url 'zwrot' %}">Formularz zwrotu produktu</a>
+  </div>
+</div>
+
+      </li>
+
+
+      </li>
+    </ul>
+  </div>
+</nav>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                     <a href="{% url 'user-profile' %}" class="btn" style="color: white; background-color: #fd5e14; margin-left: 10px; "type="submit" id="header-links">{{ user.username }} Profile
+                        <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'user-logout' %}">Logout</a>
+                </li>
+            </ul>
+
+            {% else %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a href="{% url 'user-register' %}" class="btn" style="color: white; background-color: #fd5e14; margin-left: 10px; "type="submit" id="header-links">Rejestracja <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'user-login' %}" class="btn" style="color: white; background-color: #fd5e14; margin-left: 10px; "type="submit" id="header-links">Logowanie</a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+<br>
+<br>
+<div class="cart">
+        {% with total_items=cart|length %}
+          {% if total_items > 0 %}
+            Koszyk:
+            <a href="{% url "cart:cart_detail" %}">
+              {{ total_items }} przedmioty{{ total_items|pluralize }},
+              zł{{ cart.get_total_price }}
+            </a>
+          {% else %}
+           Twój koszyk jest pusty
+          {% endif %}
+        {% endwith %}
+      </div>
+</nav>
+<main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+</main>

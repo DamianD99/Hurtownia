@@ -1,0 +1,72 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/folter.css' %}">
+<div class="jumbotron">
+
+    <section class="text-center white-text grey p-5"
+    style="background-image: url(https://mdbootstrap.com/img/Photos/Others/background.jpg);">
+  <h1 class="display-4">Informacje o stronie</h1>
+  <p class="lead">Jest tu przedsatwiony panel Administratora strony który umożliwai sprawdzanie jacy uzydkowincy zostali zalogowani. Pozwala rónież dodawanie produktów do strony.
+      edytowanie ich oraz usówanie.
+  </p>
+  <hr class="my-3">
+  <p>Wszystkie ważniejsze czynosci zostału tutaj ukazane</p>
+</div>
+<div class="container my-5 px-0 z-depth-1">
+</div>
+
+<br></br>
+
+    <div class="col-md-20 mt-4">
+        <div class="card-center">
+            <div class="card-header bg-success text-white">
+                <h3><center>Panel Administratora Hurtowni</center></h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'klijent' %}">
+                            <div class="shadow-lg p-5 mb-5 bg-body rounded">
+                                  <center>  <h3> Klijenci<i class="fas fa-users"> </i></h3></center>
+                                    <h3></h3>
+                                </div>
+
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'produkty'%}">
+                            <div class="shadow-lg p-5 mb-5 bg-body rounded">
+                               <center> <h3>Produkty <i class="fas fa-box"></i></h3></center>
+                              <h3>{{ customer_count }}</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'zamówienia'%}">
+                           <div class="shadow-lg p-5 mb-5 bg-body rounded">
+
+                                    <center><h3>Zamówienia <i class="fas fa-shipping-fast"></i></h3></center>
+                                   <h3>{{ customer_count }}</h3>
+                                </div>
+                        </a>
+                    </div>
+                </div>
+<hr>
+ <div class="card-center">
+            <div class="card-header bg-success text-white">
+                <h3><center>Panel Zwrotów</center></h3>
+            </div>
+                        <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'zwrot-admin'%}">
+                           <div class="shadow-lg p-5 mb-5 bg-body rounded">
+
+                                    <center><h3>Zwroty <i class="fas fa-shipping-fast"></i></h3></center>
+                                   <h3>{{ customer_count }}</h3>
+                                </div>
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

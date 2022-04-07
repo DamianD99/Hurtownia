@@ -1,0 +1,42 @@
+
+{% block title %}{% endblock %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+{% block content %}
+    <div class="jumbotron">
+    <section class="text-center white-text grey p-5"
+    style="background-image: url(https://mdbootstrap.com/img/Photos/Others/background.jpg);">
+  <h1 class="display-4">Oferty hurtowni</h1>
+  <p class="lead">Od teraz możesz kupować i oglądać wszyskie produktu na naszej hurtowni. Miłego użydkowania
+  </p>
+    </section>
+    </div>
+
+    <div id="sidebar">
+    <h3>Kategorie</h3>
+    <ul>
+      <li {% if not kategoria %}class="selected"{% endif %}>
+      </li>
+       {% for produkty in produkty %}
+        <li>
+          <a >{{ produkty.kategoria}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+ <div id="main" class="product-list">
+    <h1>{% if kategoria %}{{ kategoria }}{% else %}Produkty w hurtowni{% endif %}</h1>
+    {% for produkty in produkty %}
+      <div class="item">
+        <a href="{{ produkty.get_absolute_url }}">
+          <img src="{% if produkty.image %}{{ produkty.image.url }}
+    {% else %}{% static "profile-pics" %}{% endif %}" >
+        </a>
+        <a href="{{ produkty.get_absolute_url }}">{{ produkty.nazwa }}</a>
+        <br>
+        ${{ produkty.cena }}
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

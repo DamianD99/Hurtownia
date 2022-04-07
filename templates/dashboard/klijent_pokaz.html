@@ -1,0 +1,69 @@
+{%extends 'partnerzy/base.html' %}
+{% load crispy_forms_filters %}
+{% block title %} Strona internetowa{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% load static %}
+<div class="row my-4">
+    <div class="col-md-5"></div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+
+                <h1>Profil</h1>
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                      Inforamcje o Profilu
+                            <hr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+
+                                 Imie
+                                  </th>
+                                <td>{{ klijent.first_name }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Nazwisko</th>
+                                <td>{{ klijent.last_name }}</td>
+                            </tr>
+<tr>
+                                <th scope="row">Nazwa Urzydkownika</th>
+                                <td>{{ klijent.username }}</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>{{ klijent.email }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+
+                                    Nr telefonu
+
+                                    </th>
+                                <td>{{ klijent.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Adres</th>
+                                <td>{{ klijent.profile.address }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <img src="{% if user.profile.image %}{{ profile.image.url }}
+{% else %}{% static "static/profile-pics" %}{% endif %}">
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

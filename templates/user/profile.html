@@ -1,0 +1,73 @@
+{%extends 'partnerzy/base.html' %}
+{% load crispy_forms_filters %}
+{% block title %} Strona internetowa{% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="row my-4">
+    <div class="col-md-5"></div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+
+                <h1>Profil</h1>
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                      Inforamcje o Profilu
+                            <hr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+
+                                 imie
+
+
+                                  </th>
+                                <td>{{ user.first_name }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Nazwisko</th>
+                                <td>{{ user.last_name }}</td>
+                            </tr>
+<tr>
+                                <th scope="row">nazwa urzydkownika</th>
+                                <td>{{ user.username }}</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+
+                                    Nr telefonu
+
+                                    </th>
+                                <td>{{ user.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Adres</th>
+                                <td>{{ user.address }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                                    <img src="{% if profile.image %}{{ profile.image.url }}
+{% else %}{% static "profile-pics" %}{% endif %}" alt="..." style="height: 400px; width: auto">
+            </div>
+            <a
+                   href="{% url 'user-profile-update' %}" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Edytuj profil</a>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+
