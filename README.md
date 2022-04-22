@@ -65,5 +65,5 @@ Możliwości jakie dale aplikacja:
 | **admin**    | admin          | administrator |
 | **adminv111**     | damno132       | użytkownik    |
 
-
+![alt text](https://github.com/DamianD99/Hurtownia/blob/master/static/profile_pics/1.PNG)
 
