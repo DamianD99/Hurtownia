@@ -4,7 +4,7 @@
 ---
 ## Opis Aplikacji
 Prosta aplikacja napisana w ramach nauki Django/Reacta. Ma ona na celu obługe hurtowni do zamawiania oraz zwrotów towarów. Wszyski jest wykonywane za sprawą panelu Administratora oraz użydkownika.
-
+![alt text](https://github.com/DamianD99/Hurtownia/blob/master/static/profile_pics/1.PNG)
 Apliakacja jest w fazie edycji!
 
 ---
@@ -65,5 +65,7 @@ Możliwości jakie dale aplikacja:
 | **admin**    | admin          | administrator |
 | **adminv111**     | damno132       | użytkownik    |
 
-![alt text](https://github.com/DamianD99/Hurtownia/blob/master/static/profile_pics/1.PNG)
-
+## Panel Aadministratora
+![alt text](https://github.com/DamianD99/Hurtownia/blob/master/static/profile_pics/3.PNG)
+## Panel Urzydkownika
+![alt text](https://github.com/DamianD99/Hurtownia/blob/master/static/profile_pics/4.PNG)
